@@ -1,0 +1,47 @@
+\section{前言}
+目前市场上已有SAE等级1和2 \cite {SAE2016}的驾驶员辅助系统和自动化系统
+（奥迪交通堵塞试点\cite{noauthor_techday_nodate}或Waymo自动驾驶汽车\cite{hawkins_waymo_2017}）宣布遵循3级（有条件自动化）和4（高度自动化）。
+%A challenge for the introduction of higher levels of automation is to assure that these vehicle systems behave in a safe way.
+引入更高级自动化的挑战是确保这些车辆系统以安全的方式运行。
+%For driver assistance systems, this proof is furnished by driving many test kilometers on test grounds and public roads.
+对于驾驶辅助系统，安全证明是通过在测试场地和公共道路上驾驶里程来提供的。
+%However, for higher levels of automation a distance-based validation is not an economically acceptable solution \cite{wachenfeld_release_2016}. 
+但对于更高级别的自动化，基于测试里程的验证的解决方案在经济成本上不可接受。\cite{wachenfeld_release_2016}。
+%As an alternative to the distance-based validation we introduce a scenario-based approach.
+作为基于距离的验证的替代方案，我们引入了基于场景的方法。
+%The key idea is to purposefully vary and validate the operating scenarios of the automated vehicle.
+其中的关键是有目的的改变和验证自动驾驶汽车的运行场景。
+%Therefore, the systematic derivation of scenarios and further assumptions have to be documented along the development process to ensure a traceable scenario generation.
+因此，必须在开发过程中系统的记录与推演场景，以确保生成可追踪的场景。
+%Therefore, scenarios have to be systematically documented and derived along the development process to ensure a traceable scenario generation.
+%A challenge for the introduction of higher levels of automation is the development, the verification, and the validation of safety concepts for such vehicle guidance systems.
+
+%The ISO~26262 standard is a guideline for the development of safety-critical electric/electronic vehicle systems and thus provides a framework for the development of vehicle guidance systems under the aspect of functional safety.
+%According to the ISO~26262 standard, scenarios can be utilized to support the development process.
+ISO~26262标准是开发安全关键电气/电子车辆系统的指南，因此为功能安全方面的车辆引导系统的开发提供了框架。根据ISO~26262标准，可以利用场景来支持开发过程。
+%For instance, scenarios can help to derive requirements, to develop the necessary hardware and software components, and to prove the safety of these components in the test process. 
+%When creating test cases, scenarios are necessary for generating consistent input data for the test object in any case.
+例如，场景有助于推导需求，开发必要的硬件和软件组件，并在测试过程中证明这些组件的安全性。
+%Nevertheless, these different applications of scenarios result in distinct requirements for scenario representation in each development phase of the ISO~26262 standard. 
+然而，这些场景的不同应用导致对ISO~26262标准的每个开发阶段中的场景表示的不同要求。
+
+%This contribution proposes three abstraction levels for scenarios along a V-model-based development process.
+%In this way, scenarios can be identified on a high level of abstraction in the concept phase and be detailed and concretized along the development process. 
+本文贡献为基于V模型的开发过程中的场景提出了三个抽象级别。
+通过这种方式，可以在概念阶段的高级抽象中识别场景，并在开发过程中进行详细和具体化。
+%This allows a structured approach, starting from the item definition according to the ISO~26262 standard, followed by the hazard analysis and risk assessment (HARA), and ending up with the necessary test cases for safety verification and validation.
+这允许采用结构化方法，从根据ISO~26262标准的项目定义开始，然后进行危害分析和风险评估（HARA），最后得到必要的安全验证和验证测试用例。
+%Thus, the authors suggest an extended definition of the term `scenario' based on the definition of Ulbrich~et~al.~\cite{ulbrich_definition_2015} and introduce the abstraction levels of functional, logical, and concrete scenarios. 
+因此，作者基于Ulbrich等人\cite{ulbrich_definition_2015}的定义提出了对“场景”这一术语的扩展定义，并介绍了功能，逻辑和具体场景的抽象级别。
+%A German version of this paper has been published at a workshop on driver assistance systems \cite{SzenarienProzess2017}.
+
+%The paper is structured as follows:
+本文组织结构如下：
+%Section~\ref{related_work} gives a short motivation based on selected related work regarding scenarios in the development process for automated driving functions, utilized levels of abstraction for scenarios, and existing definitions of the term scenario.
+第\ref {related_work}节基于选定的相关工作提供了一个简短的动机，这些工作涉及自动驾驶功能的开发过程中的场景，场景的抽象使用级别以及术语场景的现有定义。
+%Section~\ref{process} derives and analyzes requirements for the representation and usage of scenarios in the development process of the ISO~26262 standard.
+第~\ref{process}节推导并分析ISO~26262标准开发过程中场景表示和使用的要求。
+%Afterwards, section~\ref{terminologie} defines three layers of abstraction for scenarios and shows how these scenario representations can be converted into each other along the development process.
+之后，第\ref{terminologie}节部分为场景定义了三层抽象，并展示了这些场景表示如何在开发过程中相互转换。
+%Finally, section~\ref{conclusion} gives a short conclusion.
+最后，第~\ref{conclusion}节作出一份总结。

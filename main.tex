@@ -1,0 +1,233 @@
+\documentclass[conference]{IEEEtranch}
+\ifCLASSINFOpdf
+   \usepackage[pdftex]{graphicx}
+   \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+\fi
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor infra-structure high-lighted asses-sment inter-action as-sess-ment}
+%\usepackage{array,ragged2e}
+
+%\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage{ctex}
+%\usepackage[english]{babel}
+
+\usepackage{multirow}
+\usepackage{tabularx,calc}
+%\usepackage{amsmath}
+\usepackage{color}
+\usepackage{colortbl}
+
+
+\renewcommand{\contentsname}{Contents}
+\renewcommand{\figurename}{图}
+\renewcommand{\abstractname}{摘要}
+\usepackage{hyperref}
+
+\usepackage{tikz,amsmath, amssymb,bm,color}
+\usepackage{pgfplots}
+\usepackage{environ}
+\usepackage{ifthen}
+\makeatletter
+\newsavebox{\measure@tikzpicture}
+\NewEnviron{scaletikzpicturetowidth}[1]{%
+	\def\tikz@width{#1}%
+	\def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
+		\BODY
+	\end{lrbox}%
+	\pgfmathparse{#1/\wd\measure@tikzpicture}%
+	\edef\tikzscale{\pgfmathresult}%
+	\BODY
+}
+\makeatother
+\newboolean{compileforpublish}
+\setboolean{compileforpublish}{true}
+\newboolean{isaccepted}
+\setboolean{isaccepted}{true}
+%copyrightnotice IEEE with tikz
+\ifthenelse{\boolean{isaccepted}}
+{%if
+	\newcommand\copyrighttext{%
+		\footnotesize \parbox[t]{.11\textwidth}{\copyright{} \the\year~IEEE.} \parbox[t]{.89\textwidth}{}}
+}
+{%else
+	\newcommand\copyrighttext{%
+		\footnotesize \centering This work has been submitted to the IEEE for possible publication.\\ Copyright may be transferred without notice, after which this version may no longer be accessible.}
+}
+
+\newcommand\copyrightnotice{%
+	\ifthenelse{\boolean{compileforpublish}}
+	{
+		\begin{tikzpicture}[remember picture,overlay]
+		\node[anchor=south,yshift=10.5pt] at (current page.south) {\parbox{\dimexpr\textwidth-\fboxsep-\fboxrule\relax}{\copyrighttext}};
+		\end{tikzpicture}%
+	}
+}
+
+\newcommand{\contradiction}{{\hbox{%
+			\setbox0=\hbox{$\mkern-3mu\times\mkern-3mu$}%
+			\setbox1=\hbox to0pt{\hss$\times$\hss}%
+			\copy0\raisebox{0.5\wd0}{\copy1}\raisebox{-0.5\wd0}{\box1}\box0
+}}}
+
+\renewcommand{\IEEEtitletopspaceextra}{20pt}
+
+\begin{document}
+%
+\title{用于自动驾驶汽车开发、测试与验证的场景}
+
+\author{\IEEEauthorblockN{Till Menzel, Gerrit Bagschik and Markus Maurer}
+\IEEEauthorblockA{Institute of Control Engineering\\
+Technische Universit\"at Braunschweig\\
+Braunschweig, Germany\\
+}
+}
+
+
+\maketitle%
+\copyrightnotice%
+
+\begin{abstract}
+	\input{0_abstract/abstract}
+\end{abstract}
+
+
+
+\input{1_introduction/introduction}
+\input{2_relatedWork/relatedWork}
+\input{3_process/process}
+\input{4_terminology/terminology}
+\input{5_conclusion/conclusion}
+
+
+\bibliographystyle{IEEEtran}
+%\bibliography{bib/bib}
+\begin{thebibliography}{10}
+	\providecommand{\url}[1]{#1}
+	\csname url@samestyle\endcsname
+	\providecommand{\newblock}{\relax}
+	\providecommand{\bibinfo}[2]{#2}
+	\providecommand{\BIBentrySTDinterwordspacing}{\spaceskip=0pt\relax}
+	\providecommand{\BIBentryALTinterwordstretchfactor}{4}
+	\providecommand{\BIBentryALTinterwordspacing}{\spaceskip=\fontdimen2\font plus
+		\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+		\fontdimen4\font\relax}
+	\providecommand{\BIBforeignlanguage}[2]{{%
+			\expandafter\ifx\csname l@#1\endcsname\relax
+			\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+			\typeout{** loaded for the language `#1'. Using the pattern for}%
+			\typeout{** the default language instead.}%
+			\else
+			\language=\csname l@#1\endcsname
+			\fi
+			#2}}
+	\providecommand{\BIBdecl}{\relax}
+	\BIBdecl
+	
+	\bibitem{SAE2016}
+	{Society of Automotive Engineers (SAE)}, ``J3016 - {Taxonomy and Definitions
+		for Terms Related to On-Road Motor Vehicle Automated Driving Systems},''
+	{Society of Automotive Engineers (SAE)}, 2016.
+	
+	\bibitem{noauthor_techday_nodate}
+	\BIBentryALTinterwordspacing
+	``\BIBforeignlanguage{en}{{TechDay} piloted driving -- {The} traffic jam pilot
+		in the new {Audi} {A}8},'' 2017, accessed: 01--15--2018. [Online]. Available:
+	\url{https://www.audi-mediacenter.com/en/techday-piloted-driving-the-traffic-jam-pilot-in-the-new-audi-a8-9276}
+	\BIBentrySTDinterwordspacing
+	
+	\bibitem{hawkins_waymo_2017}
+	\BIBentryALTinterwordspacing
+	``Waymo is first to put fully self-driving cars on {US} roads without a safety
+	driver,'' 2017, accessed: 01--15--2018. [Online]. Available:
+	\url{https://www.theverge.com/2017/11/7/16615290/waymo-self-driving-safety-driver-chandler-autonomous}
+	\BIBentrySTDinterwordspacing
+	
+	\bibitem{wachenfeld_release_2016}
+	W.~Wachenfeld and H.~Winner, ``\BIBforeignlanguage{en}{The {Release} of
+		{Autonomous} {Vehicles}},'' in \emph{\BIBforeignlanguage{en}{Autonomous
+			{Driving}}}, M.~Maurer, J.~C. Gerdes, B.~Lenz, and H.~Winner, Eds.\hskip 1em
+	plus 0.5em minus 0.4em\relax Berlin, Heidelberg, Germany: Springer Berlin
+	Heidelberg, 2016, pp. 425--449.
+	
+	\bibitem{ulbrich_definition_2015}
+	S.~Ulbrich, T.~Menzel, A.~Reschka, F.~Schuldt, and M.~Maurer, ``{Defining and
+		Substantiating the Terms Scene, Situation, and Scenario for Automated
+		Driving},'' in \emph{2015 {IEEE} 18th {International} {Conference} on
+		{Intelligent} {Transportation} {Systems} ({ITSC})}, Las Palmas, Spain, 2015,
+	pp. 982--988.
+	
+	\bibitem{SzenarienProzess2017}
+	G.~Bagschik, T.~Menzel, A.~Reschka, and M.~Maurer, ``{Szenarien
+		Entwicklung, Absicherung und Test von automatisierten Fahrfunktionen -
+		English title: Scenarios for Development, Test and Validation of Automated
+		Vehicles},'' in \emph{11. {Workshop} {Fahrerassistenz und automatisiertes
+			Fahren} {FAS} 2017}, Walting, Germany, 2017.
+	
+	\bibitem{go_blind_2004}
+	K.~Go and J.~M. Carroll, ``The {Blind} {Men} and the {Elephant}: {Views} of
+	{Scenario}-based {System} {Design},'' \emph{Interactions}, vol.~11, no.~6,
+	pp. 44--53, 2004.
+	
+	\bibitem{bergenhem_how_2015}
+	C.~Bergenhem, R.~Johansson, A.~S\"oderberg, J.~Nilsson, J.~Tryggvesson,
+	M.~T\"orngren, and S.~Ursing, ``How to {Reach} {Complete} {Safety}
+	{Requirement} {Refinement} for {Autonomous} {Vehicles},'' in \emph{{CARS}
+		2015-{Critical} {Automotive} applications: {Robustness} \& {Safety}}, Paris,
+	France, 2015.
+	
+	\bibitem{bagschik_identification_2016}
+	G.~Bagschik, A.~Reschka, T.~Stolte, and M.~Maurer, ``Identification of
+	{P}otential {H}azardous {E}vents for an {Unmanned} {Protective} {Vehicle},''
+	in \emph{2016 {IEEE} {Intelligent} {Vehicles} {Symposium} ({IV})},
+	Gothenburg, Sweden, 2016, pp. 691--697.
+	
+	\bibitem{stolte_towards_2015}
+	T.~Stolte, A.~Reschka, G.~Bagschik, and M.~Maurer, ``Towards {Automated}
+	{Driving}: {Unmanned} {Protective} {Vehicle} for {Highway} {Hard} {Shoulder}
+	{Road} {Works},'' in \emph{2015 {IEEE} 18th {International} {Conference} on
+		{Intelligent} {Transportation} {Systems} ({ITSC})}, Las Palmas, Spain, 2015,
+	pp. 672--677.
+	
+	\bibitem{schuldt2011}
+	F.~Schuldt, F.~Saust, B.~Lichte, M.~Maurer, and S.~Scholz, ``{Effiziente
+		systematische Testgenerierung f\"ur Fahrerassistenzsysteme in virtuellen
+		Umgebungen - English title: Efficient systematic test case generation for
+		automated driving functions in virtual driving environments},'' in \emph{AAET
+		- Automatisierungssysteme, Assistenzsysteme und eingebettete Systeme
+		Transportmittel}, Braunschweig, Germany, 2013, pp. 114 -- 134.
+	
+	\bibitem{bach_model_2016}
+	J.~Bach, S.~Otten, and E.~Sax, ``Model based scenario specification for
+	development and test of automated driving functions,'' in \emph{2016 {IEEE}
+		{Intelligent} {Vehicles} {Symposium} ({IV})}, Gothenborg, Sweden, 2016, pp.
+	1149--1155.
+	
+	\bibitem{ISO_26262_2011}
+	ISO, \emph{26262 -- Road vehicles -- Functional Safety}, 2016.
+	
+	\bibitem{Reschka2016}
+	A.~Reschka, ``{Fertigkeiten- und F\"ahigkeitengraphen als Grundlage f\"ur den
+		sicheren Betrieb von automatisierten Fahrzeugen in st\"adtischer Umgebung -
+		English title: Skills and ability graphs as basis for safe operation of
+		automated vehicles in urban environments},'' Ph.D. dissertation, Technische
+	Universit{\"a}t Braunschweig, 2017.
+	
+	\bibitem{Schuldt2017}
+	F.~Schuldt, ``{Ein Beitrag f\"ur den methodischen Test von automatisierten
+		Fahrfunktionen mit Hilfe von virtuellen Umgebungen - English title: Towards
+		testing of automated driving functions in virtual driving environments},''
+	Ph.D. dissertation, Technische Universit{\"a}t Braunschweig, 2017.
+	
+	\bibitem{RAA}
+	\emph{Richtlinie f\"ur die Anlage von Autobahnen - English title: Guidelines
+		for Constructing Motorways}, Forschungsgesellschaft f\"ur Stra{\ss}en und
+	Verkehrswesen Std., 2009.
+	
+\end{thebibliography}
+
+% that's all folks
+\end{document}
+
+
